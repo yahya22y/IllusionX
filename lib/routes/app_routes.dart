@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:yahya_s_application1/presentation/app_navigation_screen/app_navigation_screen.dart';
 import 'package:yahya_s_application1/presentation/login_screen/login_screen.dart';
 import 'package:yahya_s_application1/presentation/signup_screen/signup_screen.dart';
 import '../presentation/chatbot_draweritem/chatbot_draweritem.dart';
@@ -34,7 +33,6 @@ class AppRoutes {
   static const String onboardingSecondScreen = '/onboarding_second_screen';
 
   static Map<String, WidgetBuilder> routes = {
-    appNavigationScreen: (context) => AppNavigationScreen(),
     onboardingSecondScreen: (context) => OnboardingSecondScreen(),
     onboardingScreen: (context) => OnboardingScreen(),
     splashScreen: (context) => SplashScreen(),
