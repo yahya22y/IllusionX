@@ -74,7 +74,10 @@ class ForgetScreenState extends ConsumerState<ForgetScreen> {
                     ),
                     SizedBox(height: 33.v),
                     CustomElevatedButton(
+                      height: 50.h,
                       width: 220.h,
+                      decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
                       text: "lbl_get_otp".tr,
                       onPressed: (() {
                         onTapBtnHome(context);
@@ -109,6 +112,7 @@ class ForgetScreenState extends ConsumerState<ForgetScreen> {
       centerTitle: true,
       title: AppbarTitle(
         text: "lbl_forget_password".tr,
+        
       ),
     );
   }

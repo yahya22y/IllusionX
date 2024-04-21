@@ -37,17 +37,17 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
                                 padding: EdgeInsets.only(
                                     left: 14.h, top: 45.v, bottom: 45.v),
                                 child: Text("Peter Parker".tr,
-                                    style: theme.textTheme.titleLarge))
+                                    style: CustomTextStyles.bodyLargeFuturaHvBT))
                           ])),
                       SizedBox(height: 28.v),
                       _buildTwentyEight(context),
-                      SizedBox(height: 37.v),
+                      SizedBox(height: 30.v),
                       _buildAppSettings(context),
-                      SizedBox(height: 37.v),
+                      SizedBox(height: 30.v),
                       _buildAboutUs(context),
-                      SizedBox(height: 37.v),
+                      SizedBox(height: 30.v),
                       _buildContactUs(context),
-                      SizedBox(height: 37.v),
+                      SizedBox(height: 30.v),
                       _buildLogOut(context),
                       SizedBox(height: 5.v)
                     ])),
@@ -65,20 +65,25 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
             },
             margin: EdgeInsets.only(left: 21.h, top: 14.v, bottom: 17.v)),
         centerTitle: true,
-        title: AppbarTitle(text: "lbl_settings".tr));
+        title: AppbarTitle(
+          text: "lbl_settings".tr,
+        ));
   }
 
   Widget _buildTwentyEight(BuildContext context) {
     return CustomElevatedButton(
+      height: 50.h,
+      decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_profile".tr,
         margin: EdgeInsets.only(left: 2.h),
         onPressed: () {
           onTapBtnprofile(context);
         },
         leftIcon: Container(
-            margin: EdgeInsets.only(right: 40.h),
+            margin: EdgeInsets.only(right: 70.h),
             child: CustomImageView(
-                imagePath: ImageConstant.imgSettings,
+                imagePath: ImageConstant.imgProfilee,
                 height: 29.v,
                 width: 25.h)));
   }
@@ -86,56 +91,69 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
   /// Section Widget
   Widget _buildAppSettings(BuildContext context) {
     return CustomElevatedButton(
+      height: 50.h,
+      decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_app_settings".tr,
         margin: EdgeInsets.only(left: 2.h),
         onPressed: (() {
           onTapAppSettings(context);
         }),
         leftIcon: Container(
-            margin: EdgeInsets.only(right: 30.h),
+            margin: EdgeInsets.only(right: 32.h),
             child: CustomImageView(
-                imagePath: ImageConstant.imgSearch,
-                height: 25.v,
+                imagePath: ImageConstant.imgSettingW,
+                height: 29.v,
                 width: 25.h)));
   }
 
   /// Section Widget
   Widget _buildAboutUs(BuildContext context) {
     return CustomElevatedButton(
+      height: 50.h,
+      decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_about_us".tr,
         margin: EdgeInsets.only(left: 2.h),
         leftIcon: Container(
-            margin: EdgeInsets.only(right: 45.h),
+            margin: EdgeInsets.only(right: 57.h),
             child: CustomImageView(
-                imagePath: ImageConstant.imgInformation1,
-                height: 35.v,
-                width: 30.h)));
+                imagePath: ImageConstant.imgAboutUs,
+                height: 30.h,
+                width: 35.h)));
   }
 
   /// Section Widget
   Widget _buildContactUs(BuildContext context) {
     return CustomElevatedButton(
+      height: 50.h,
+      decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_contact_us".tr,
+        margin: EdgeInsets.only(left: 2.h),
         leftIcon: Container(
-            margin: EdgeInsets.only(right: 30.h),
+            margin: EdgeInsets.only(right: 42.h),
             child: CustomImageView(
-                imagePath: ImageConstant.imgProfile,
-                height: 35.v,
-                width: 18.h)));
+                imagePath: ImageConstant.imgInfo,
+                height: 35.h,
+                width: 35.h)));
   }
 
   /// Section Widget
   Widget _buildLogOut(BuildContext context) {
     return CustomElevatedButton(
+      height: 50.h,
+      decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_log_out".tr,
         onPressed: () {
           onTapLogOut(context);
         },
         margin: EdgeInsets.only(left: 1.h),
         leftIcon: Container(
-            margin: EdgeInsets.only(right: 30.h),
+            margin: EdgeInsets.only(right: 60.h),
             child: CustomImageView(
-                imagePath: ImageConstant.imgUser, height: 22.v, width: 19.h)));
+                imagePath: ImageConstant.imgLogout, height: 22.v, width: 19.h)));
   }
 
   /// Section Widget
@@ -143,15 +161,16 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
     return CustomElevatedButton(
         height: 32.v,
         width: 153.h,
+        decoration: AppDecoration.outlineSecondaryContainer1
+            .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_settings".tr,
-        margin: EdgeInsets.only(top: 4.v, bottom: 3.v),
+        margin: EdgeInsets.only(left: 4.v, top: 5.v, bottom: 3.v),
         leftIcon: Container(
             margin: EdgeInsets.only(right: 24.h),
             child: CustomImageView(
                 imagePath: ImageConstant.imgSearchGray50,
                 height: 26.v,
-                width: 29.h)),
-        buttonStyle: CustomButtonStyles.outlineBlackFTL11,
+                width: 29.v)),
         buttonTextStyle: theme.textTheme.titleSmall!);
   }
 
@@ -183,6 +202,7 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
               child: CustomIconButton(
                   height: 39.adaptSize,
                   width: 39.adaptSize,
+                  padding: EdgeInsets.all(6.h),
                   onTap: () {
                     onTapBtnInbox(context);
                   },

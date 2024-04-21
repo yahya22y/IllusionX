@@ -1,5 +1,6 @@
 import 'package:yahya_s_application1/widgets/app_bar/custom_app_bar.dart';
 import 'package:yahya_s_application1/widgets/app_bar/appbar_title.dart';
+import 'package:yahya_s_application1/widgets/custom_elevated_button.dart';
 import 'package:yahya_s_application1/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:yahya_s_application1/core/app_export.dart';
@@ -40,7 +41,10 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
         title: AppbarTitle(
-            text: "lbl_hey_peter".tr, margin: EdgeInsets.only(left: 21.h)));
+            text: "lbl_hey_peter".tr,
+            margin: EdgeInsets.only(
+              left: 21.h,
+            )));
   }
 
   /// Section Widget
@@ -209,19 +213,25 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
         padding: EdgeInsets.only(left: 30.h, right: 21.h, bottom: 13.v),
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
-              width: 105.h,
+              width: 153.h,
               margin: EdgeInsets.symmetric(vertical: 10.v),
               decoration: AppDecoration.outlineSecondaryContainer1
                   .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomImageView(
-                        imagePath: ImageConstant.imgHome,
-                        height: 15.v,
-                        width: 24.h,
-                        margin: EdgeInsets.only(bottom: 2.v)),
-                    Text("lbl_home".tr, style: theme.textTheme.titleSmall)
+                    CustomElevatedButton(
+                        height: 32.v,
+                        width: 153.h,
+                        text: "lbl_home".tr,
+                        margin: EdgeInsets.only(bottom: 2.v),
+                        leftIcon: Container(
+                            margin: EdgeInsets.only(right: 15.h),
+                            child: CustomImageView(
+                                imagePath: ImageConstant.imgHomeWhite,
+                                height: 15.v,
+                                width: 24.v)),
+                        buttonTextStyle: theme.textTheme.titleSmall!)
                   ])),
           Spacer(),
           CustomIconButton(

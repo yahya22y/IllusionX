@@ -121,6 +121,8 @@ class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
             ),
           ),
           CustomElevatedButton(
+            decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
             width: 153.h,
             text: "lbl_chatbot".tr,
             margin: EdgeInsets.only(

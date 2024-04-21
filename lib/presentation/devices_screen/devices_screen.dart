@@ -36,13 +36,16 @@ class DevicesScreenState extends ConsumerState<DevicesScreen> {
                               style: theme.textTheme.bodyLarge)),
                       SizedBox(height: 31.v),
                       _buildTwentyFour(context),
-                      Spacer(),
                       SizedBox(height: 76.v),
                       CustomElevatedButton(
+                        height: 50.h,
                           text: "lbl_add_a_device".tr,
                           margin: EdgeInsets.only(left: 7.h, right: 8.h),
                           buttonStyle:
-                              CustomButtonStyles.outlineSecondaryContainer)
+                              CustomButtonStyles.outlineSecondaryContainer, 
+                              decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),)
+                              
                     ])),
             bottomNavigationBar: _buildThirtyTwo(context)));
   }
@@ -58,7 +61,7 @@ class DevicesScreenState extends ConsumerState<DevicesScreen> {
             },
             margin: EdgeInsets.only(left: 21.h, top: 15.v, bottom: 16.v)),
         centerTitle: true,
-        title: AppbarTitle(text: "lbl_devices".tr));
+        title: AppbarTitle(text: "lbl_devices".tr,));
   }
 
   /// Section Widget
@@ -139,6 +142,8 @@ class DevicesScreenState extends ConsumerState<DevicesScreen> {
           CustomElevatedButton(
               height: 32.v,
               width: 153.h,
+              decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
               text: "lbl_devices".tr,
               margin: EdgeInsets.only(left: 23.h, top: 5.v, bottom: 3.v),
               leftIcon: Container(
@@ -153,7 +158,7 @@ class DevicesScreenState extends ConsumerState<DevicesScreen> {
                   width: 39.adaptSize,
                   padding: EdgeInsets.all(4.h),
                   onTap: () {
-                    onTapBtnSearch(context);
+                    onTapBtnSettings(context);
                   },
                   child: CustomImageView(imagePath: ImageConstant.imgSearch)))
         ]));
@@ -171,7 +176,7 @@ class DevicesScreenState extends ConsumerState<DevicesScreen> {
     );
   }
 
-  onTapBtnSearch(BuildContext context) {
+  onTapBtnSettings(BuildContext context) {
     NavigatorService.pushNamed(
       AppRoutes.settingsScreen,
     );

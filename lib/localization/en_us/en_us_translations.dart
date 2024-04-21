@@ -59,7 +59,7 @@ final Map<String, String> enUs = {
   "lbl_vr_headset": "VR Headset",
 
   // 8 Settings Screen
-  "lbl_about_us": "About us", "lbl_contact_us": "Contact Us",
+  "lbl_about_us": "About us", "lbl_contact_us": "Contact us",
   "lbl_log_out": "Log out",
 
   // 9.0 Profile Screen

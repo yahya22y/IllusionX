@@ -34,16 +34,22 @@ class OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 margin: EdgeInsets.only(left: 44.h),
               ),
               SizedBox(height: 42.v),
-              SizedBox(
+              // SizedBox(
+              //   height: 20.v,
+              //   child: AnimatedSmoothIndicator(
+              //     activeIndex: 0,
+              //     count: 2,
+              //     effect: ScrollingDotsEffect(
+              //       activeDotColor: Color(0X1212121D),
+              //       dotHeight: 20.v,
+              //     ),
+              //   ),
+              // ),
+              
+              CustomImageView(
+                imagePath: ImageConstant.imgUpload,
+                width: 64.h,
                 height: 20.v,
-                child: AnimatedSmoothIndicator(
-                  activeIndex: 0,
-                  count: 2,
-                  effect: ScrollingDotsEffect(
-                    activeDotColor: Color(0X1212121D),
-                    dotHeight: 20.v,
-                  ),
-                ),
               ),
               SizedBox(height: 24.v),
               Text(
@@ -67,7 +73,10 @@ class OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
               SizedBox(height: 83.v),
               CustomElevatedButton(
+                height: 50.h,
                 width: 219.h,
+                decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
                 onPressed: () {
                   ontapbtnnext(context);
                 },

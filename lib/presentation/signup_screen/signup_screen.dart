@@ -309,9 +309,12 @@ class SignupScreenState extends ConsumerState<SignupScreen> {
   /// Section Widget
   Widget _buildSignUp(BuildContext context) {
     return CustomElevatedButton(
-      width: 220.h,
+      height: 50.h,
+      width: 219.h,
       text: "lbl_sign_up".tr,
       buttonStyle: CustomButtonStyles.outlineBlackTL15,
+      decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
       onPressed: () {
         onTapBtnHome(context);
       },

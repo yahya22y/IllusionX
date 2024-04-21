@@ -59,11 +59,15 @@ class OnboardingSecondScreenState
               ),
               SizedBox(height: 64.v),
               CustomElevatedButton(
+                height: 50.h,
                 width: 219.h,
+                decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
                 onPressed: () {
                   ontapbtngetstarted(context);
                 },
                 text: "lbl_get_started".tr,
+                
               )
             ],
           ),

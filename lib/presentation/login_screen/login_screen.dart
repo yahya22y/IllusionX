@@ -137,15 +137,17 @@ class LoginScreenState extends ConsumerState<LoginScreen> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 94.v),
+                                  SizedBox(height: 80.v),
                                   CustomElevatedButton(
+                                    decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
                                       onPressed: (() {
                                         onTapBtnHome(context);
                                       }),
+                                      height: 50.h,
                                       width: 219.h,
                                       text: "lbl_login".tr),
-                                  Spacer(),
-                                  SizedBox(height: 5.v),
+                                  SizedBox(height: 60.v),
                                   GestureDetector(
                                       onTap: () {
                                         onTapTxtDonthaveanaccount(context);

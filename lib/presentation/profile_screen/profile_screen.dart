@@ -225,6 +225,9 @@ class ProfileScreenState extends ConsumerState<ProfileScreen> {
   Widget _buildCancel(BuildContext context) {
     return Expanded(
       child: CustomElevatedButton(
+        height: 40.h,
+        decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_cancel".tr,
         margin: EdgeInsets.only(right: 10.h),
         onPressed: () {
@@ -238,6 +241,9 @@ class ProfileScreenState extends ConsumerState<ProfileScreen> {
   Widget _buildSave(BuildContext context) {
     return Expanded(
       child: CustomElevatedButton(
+        height: 40.h,
+        decoration: AppDecoration.outlineSecondaryContainer1
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_save".tr,
         margin: EdgeInsets.only(left: 10.h),
         onPressed: () {
