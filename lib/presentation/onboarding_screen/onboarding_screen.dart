@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+//import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../core/app_export.dart';
 import '../../widgets/custom_elevated_button.dart';
 
