@@ -7,6 +7,8 @@ import 'package:yahya_s_application1/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:yahya_s_application1/core/app_export.dart';
 import 'notifier/chatbot_notifier.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class ChatbotTwoScreen extends ConsumerStatefulWidget {
   const ChatbotTwoScreen({Key? key})
@@ -19,6 +21,23 @@ class ChatbotTwoScreen extends ConsumerStatefulWidget {
 }
 
 class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
+  Future<String> sendMessageToAPI(String message) async {
+    final apiUrl = 'https://api.example.com/chatbot'; // Replace with FastAPI
+
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      body: {'message': message},
+    );
+
+    if (response.statusCode == 200) {
+      final responseBody = jsonDecode(response.body);
+      final reply = responseBody['reply'];
+      return reply;
+    } else {
+      throw Exception('Failed to send message to API');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -122,7 +141,7 @@ class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
           ),
           CustomElevatedButton(
             decoration: AppDecoration.outlineSecondaryContainer1
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
+                .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
             width: 153.h,
             text: "lbl_chatbot".tr,
             margin: EdgeInsets.only(
