@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import '/core/app_export.dart';
-import 'package:yahya_s_application1/presentation/signup_screen/models/signup_model.dart';
+import 'package:IllusionX/presentation/signup_screen/models/signup_model.dart';
 part 'signup_state.dart';
 
 final signupNotifier = StateNotifierProvider<SignupNotifier, SignupState>(

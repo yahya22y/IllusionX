@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yahya_s_application1/core/utils/size_utils.dart';
-import 'package:yahya_s_application1/theme/theme_helper.dart';
+import 'package:IllusionX/core/utils/size_utils.dart';
+import 'package:IllusionX/theme/theme_helper.dart';
 
 /// A collection of pre-defined text styles for customizing text appearance,
 /// categorized by different font families and weights.
@@ -14,11 +14,10 @@ class CustomTextStyles {
       theme.textTheme.bodyLarge!.futuraHvBT.copyWith(
         color: appTheme.whiteA700,
       );
-  static get TitleFutura =>
-      theme.textTheme.bodyLarge!.futuraHvBT.copyWith(
+  static get TitleFutura => theme.textTheme.bodyLarge!.futuraHvBT.copyWith(
         color: Color(0XFF4D4DE9),
         fontSize: 20.fSize,
-      ); 
+      );
   static get bodyLargeFuturaHvBTff000000 =>
       theme.textTheme.bodyLarge!.futuraHvBT.copyWith(
         color: Color(0XFF000000),
@@ -27,47 +26,47 @@ class CustomTextStyles {
       theme.textTheme.bodyLarge!.futuraHvBT.copyWith(
         color: Color(0XFF4D4DE9),
       );
-      static get bodyLargeMontserratSecondaryContainer =>
+  static get bodyLargeMontserratSecondaryContainer =>
       theme.textTheme.bodyLarge!.montserrat.copyWith(
         color: theme.colorScheme.secondaryContainer.withOpacity(1),
       );
-      static get bodyLargeOnPrimary => theme.textTheme.bodyLarge!.copyWith(
+  static get bodyLargeOnPrimary => theme.textTheme.bodyLarge!.copyWith(
         color: theme.colorScheme.onPrimary,
       );
-      static get bodyLargeSecondaryContainer => theme.textTheme.bodyLarge!.copyWith(
+  static get bodyLargeSecondaryContainer => theme.textTheme.bodyLarge!.copyWith(
         color: theme.colorScheme.secondaryContainer.withOpacity(1),
       );
-      static get bodyLargeWhiteA700 => theme.textTheme.bodyLarge!.copyWith(
+  static get bodyLargeWhiteA700 => theme.textTheme.bodyLarge!.copyWith(
         color: appTheme.whiteA700,
       );
-      static get bodyMediumFuturaHvBTGray50 =>
+  static get bodyMediumFuturaHvBTGray50 =>
       theme.textTheme.bodyMedium!.futuraHvBT.copyWith(
         color: appTheme.gray50,
         fontSize: 15.fSize,
       );
-      static get bodyMediumFuturaHvBTPrimary =>
+  static get bodyMediumFuturaHvBTPrimary =>
       theme.textTheme.bodyMedium!.futuraHvBT.copyWith(
         color: theme.colorScheme.primary,
         fontSize: 15.fSize,
       );
-      static get bodyMediumFuturaMdBTWhiteA700 =>
+  static get bodyMediumFuturaMdBTWhiteA700 =>
       theme.textTheme.bodyMedium!.futuraMdBT.copyWith(
         color: appTheme.whiteA700,
       );
-      static get bodyMediumMontserrat => theme.textTheme.bodyMedium!.montserrat;
-      static get bodySmallOnPrimary => theme.textTheme.bodySmall!.copyWith(
+  static get bodyMediumMontserrat => theme.textTheme.bodyMedium!.montserrat;
+  static get bodySmallOnPrimary => theme.textTheme.bodySmall!.copyWith(
         color: Colors.black,
       );
-      static get headlineLargeWhiteA700 => theme.textTheme.headlineLarge!.copyWith(
+  static get headlineLargeWhiteA700 => theme.textTheme.headlineLarge!.copyWith(
         color: appTheme.whiteA700,
       );
-      static get headlineLargeWhiteA70032 =>
+  static get headlineLargeWhiteA70032 =>
       theme.textTheme.headlineLarge!.copyWith(
         color: appTheme.whiteA700,
         fontSize: 32.fSize,
       );
-      static get titlelargeFuturaHvBT => theme.textTheme.titleLarge!.futuraHvBT;
-  
+  static get titlelargeFuturaHvBT => theme.textTheme.titleLarge!.futuraHvBT;
+
   // Title style
   static get titleLargeMontserratWhiteA700 =>
       theme.textTheme.titleLarge!.futuraHvBT.copyWith(

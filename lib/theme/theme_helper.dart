@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yahya_s_application1/core/utils/pref_utils.dart';
-import 'package:yahya_s_application1/core/utils/size_utils.dart';
+import 'package:IllusionX/core/utils/pref_utils.dart';
+import 'package:IllusionX/core/utils/size_utils.dart';
 
 class ThemeHelper {
   // The current app theme

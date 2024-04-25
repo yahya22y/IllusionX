@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:yahya_s_application1/main.dart';
+import 'package:IllusionX/main.dart';
 
 // For checking internet connectivity
 abstract class NetworkInfoI {

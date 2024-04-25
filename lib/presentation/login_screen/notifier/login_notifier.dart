@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import '/core/app_export.dart';
-import 'package:yahya_s_application1/presentation/login_screen/models/login_model.dart';
+import 'package:IllusionX/presentation/login_screen/models/login_model.dart';
 part 'login_state.dart';
 
 final loginNotifier = StateNotifierProvider<LoginNotifier, LoginState>((ref) =>

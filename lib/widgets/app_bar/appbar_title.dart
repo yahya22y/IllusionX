@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yahya_s_application1/core/app_export.dart';
+import 'package:IllusionX/core/app_export.dart';
 
 // ignore: must_be_immutable
 class AppbarTitle extends StatelessWidget {
@@ -29,8 +29,8 @@ class AppbarTitle extends StatelessWidget {
         child: Text(
           text,
           style: CustomTextStyles.TitleFutura,
-          ),
         ),
-      );
+      ),
+    );
   }
 }

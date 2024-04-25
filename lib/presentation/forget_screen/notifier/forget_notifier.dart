@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import '/core/app_export.dart';
-import 'package:yahya_s_application1/presentation/forget_screen/models/forget_model.dart';
+import 'package:IllusionX/presentation/forget_screen/models/forget_model.dart';
 part 'forget_state.dart';
 
 final forgetNotifier = StateNotifierProvider<ForgetNotifier, ForgetState>(

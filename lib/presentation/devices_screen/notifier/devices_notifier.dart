@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import '/core/app_export.dart';
 import '../models/twentyfour_item_model.dart';
-import 'package:yahya_s_application1/presentation/devices_screen/models/devices_model.dart';
+import 'package:IllusionX/presentation/devices_screen/models/devices_model.dart';
 part 'devices_state.dart';
 
 final devicesNotifier = StateNotifierProvider<DevicesNotifier, DevicesState>(

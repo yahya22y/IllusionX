@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import '/core/app_export.dart';
-import 'package:yahya_s_application1/presentation/home_screen/models/home_model.dart';
+import 'package:IllusionX/presentation/home_screen/models/home_model.dart';
 part 'home_state.dart';
 
 final homeNotifier = StateNotifierProvider<HomeNotifier, HomeState>(

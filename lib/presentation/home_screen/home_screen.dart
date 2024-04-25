@@ -1,9 +1,9 @@
-import 'package:yahya_s_application1/widgets/app_bar/custom_app_bar.dart';
-import 'package:yahya_s_application1/widgets/app_bar/appbar_title.dart';
-import 'package:yahya_s_application1/widgets/custom_elevated_button.dart';
-import 'package:yahya_s_application1/widgets/custom_icon_button.dart';
+import 'package:IllusionX/widgets/app_bar/custom_app_bar.dart';
+import 'package:IllusionX/widgets/app_bar/appbar_title.dart';
+import 'package:IllusionX/widgets/custom_elevated_button.dart';
+import 'package:IllusionX/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
-import 'package:yahya_s_application1/core/app_export.dart';
+import 'package:IllusionX/core/app_export.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

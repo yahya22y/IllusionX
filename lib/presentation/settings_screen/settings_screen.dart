@@ -1,10 +1,10 @@
-import 'package:yahya_s_application1/widgets/app_bar/custom_app_bar.dart';
-import 'package:yahya_s_application1/widgets/app_bar/appbar_leading_image.dart';
-import 'package:yahya_s_application1/widgets/app_bar/appbar_title.dart';
-import 'package:yahya_s_application1/widgets/custom_elevated_button.dart';
-import 'package:yahya_s_application1/widgets/custom_icon_button.dart';
+import 'package:IllusionX/widgets/app_bar/custom_app_bar.dart';
+import 'package:IllusionX/widgets/app_bar/appbar_leading_image.dart';
+import 'package:IllusionX/widgets/app_bar/appbar_title.dart';
+import 'package:IllusionX/widgets/custom_elevated_button.dart';
+import 'package:IllusionX/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
-import 'package:yahya_s_application1/core/app_export.dart';
+import 'package:IllusionX/core/app_export.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -37,7 +37,8 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
                                 padding: EdgeInsets.only(
                                     left: 14.h, top: 45.v, bottom: 45.v),
                                 child: Text("Peter Parker".tr,
-                                    style: CustomTextStyles.bodyLargeFuturaHvBT))
+                                    style:
+                                        CustomTextStyles.bodyLargeFuturaHvBT))
                           ])),
                       SizedBox(height: 28.v),
                       _buildTwentyEight(context),
@@ -72,9 +73,9 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   Widget _buildTwentyEight(BuildContext context) {
     return CustomElevatedButton(
-      height: 50.h,
-      decoration: AppDecoration.outlineSecondaryContainer1
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
+        height: 50.h,
+        decoration: AppDecoration.outlineSecondaryContainer1
+            .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_profile".tr,
         margin: EdgeInsets.only(left: 2.h),
         onPressed: () {
@@ -91,9 +92,9 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
   /// Section Widget
   Widget _buildAppSettings(BuildContext context) {
     return CustomElevatedButton(
-      height: 50.h,
-      decoration: AppDecoration.outlineSecondaryContainer1
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
+        height: 50.h,
+        decoration: AppDecoration.outlineSecondaryContainer1
+            .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_app_settings".tr,
         margin: EdgeInsets.only(left: 2.h),
         onPressed: (() {
@@ -110,9 +111,9 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
   /// Section Widget
   Widget _buildAboutUs(BuildContext context) {
     return CustomElevatedButton(
-      height: 50.h,
-      decoration: AppDecoration.outlineSecondaryContainer1
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
+        height: 50.h,
+        decoration: AppDecoration.outlineSecondaryContainer1
+            .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_about_us".tr,
         margin: EdgeInsets.only(left: 2.h),
         leftIcon: Container(
@@ -126,25 +127,23 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
   /// Section Widget
   Widget _buildContactUs(BuildContext context) {
     return CustomElevatedButton(
-      height: 50.h,
-      decoration: AppDecoration.outlineSecondaryContainer1
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
+        height: 50.h,
+        decoration: AppDecoration.outlineSecondaryContainer1
+            .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_contact_us".tr,
         margin: EdgeInsets.only(left: 2.h),
         leftIcon: Container(
             margin: EdgeInsets.only(right: 42.h),
             child: CustomImageView(
-                imagePath: ImageConstant.imgInfo,
-                height: 35.h,
-                width: 35.h)));
+                imagePath: ImageConstant.imgInfo, height: 35.h, width: 35.h)));
   }
 
   /// Section Widget
   Widget _buildLogOut(BuildContext context) {
     return CustomElevatedButton(
-      height: 50.h,
-      decoration: AppDecoration.outlineSecondaryContainer1
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
+        height: 50.h,
+        decoration: AppDecoration.outlineSecondaryContainer1
+            .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_log_out".tr,
         onPressed: () {
           onTapLogOut(context);
@@ -153,7 +152,9 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
         leftIcon: Container(
             margin: EdgeInsets.only(right: 60.h),
             child: CustomImageView(
-                imagePath: ImageConstant.imgLogout, height: 22.v, width: 19.h)));
+                imagePath: ImageConstant.imgLogout,
+                height: 22.v,
+                width: 19.h)));
   }
 
   /// Section Widget

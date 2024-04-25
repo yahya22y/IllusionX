@@ -1,11 +1,11 @@
-import 'package:yahya_s_application1/widgets/app_bar/custom_app_bar.dart';
-import 'package:yahya_s_application1/widgets/app_bar/appbar_leading_image.dart';
-import 'package:yahya_s_application1/widgets/app_bar/appbar_title.dart';
-import 'package:yahya_s_application1/core/utils/validation_functions.dart';
-import 'package:yahya_s_application1/widgets/custom_text_form_field.dart';
-import 'package:yahya_s_application1/widgets/custom_elevated_button.dart';
+import 'package:IllusionX/widgets/app_bar/custom_app_bar.dart';
+import 'package:IllusionX/widgets/app_bar/appbar_leading_image.dart';
+import 'package:IllusionX/widgets/app_bar/appbar_title.dart';
+import 'package:IllusionX/core/utils/validation_functions.dart';
+import 'package:IllusionX/widgets/custom_text_form_field.dart';
+import 'package:IllusionX/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
-import 'package:yahya_s_application1/core/app_export.dart';
+import 'package:IllusionX/core/app_export.dart';
 import 'notifier/forget_notifier.dart';
 
 class ForgetScreen extends ConsumerStatefulWidget {
@@ -77,7 +77,8 @@ class ForgetScreenState extends ConsumerState<ForgetScreen> {
                       height: 50.h,
                       width: 220.h,
                       decoration: AppDecoration.outlineSecondaryContainer1
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
+                          .copyWith(
+                              borderRadius: BorderRadiusStyle.circleBorder11),
                       text: "lbl_get_otp".tr,
                       onPressed: (() {
                         onTapBtnHome(context);
@@ -112,7 +113,6 @@ class ForgetScreenState extends ConsumerState<ForgetScreen> {
       centerTitle: true,
       title: AppbarTitle(
         text: "lbl_forget_password".tr,
-        
       ),
     );
   }

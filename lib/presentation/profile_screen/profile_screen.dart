@@ -1,12 +1,12 @@
-import 'package:yahya_s_application1/widgets/app_bar/custom_app_bar.dart';
-import 'package:yahya_s_application1/widgets/app_bar/appbar_leading_image.dart';
-import 'package:yahya_s_application1/widgets/app_bar/appbar_title.dart';
-import 'package:yahya_s_application1/widgets/app_bar/appbar_trailing_image.dart';
-import 'package:yahya_s_application1/widgets/custom_text_form_field.dart';
-import 'package:yahya_s_application1/widgets/custom_drop_down.dart';
-import 'package:yahya_s_application1/widgets/custom_elevated_button.dart';
+import 'package:IllusionX/widgets/app_bar/custom_app_bar.dart';
+import 'package:IllusionX/widgets/app_bar/appbar_leading_image.dart';
+import 'package:IllusionX/widgets/app_bar/appbar_title.dart';
+import 'package:IllusionX/widgets/app_bar/appbar_trailing_image.dart';
+import 'package:IllusionX/widgets/custom_text_form_field.dart';
+import 'package:IllusionX/widgets/custom_drop_down.dart';
+import 'package:IllusionX/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
-import 'package:yahya_s_application1/core/app_export.dart';
+import 'package:IllusionX/core/app_export.dart';
 import 'notifier/profile_notifier.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
@@ -227,7 +227,7 @@ class ProfileScreenState extends ConsumerState<ProfileScreen> {
       child: CustomElevatedButton(
         height: 40.h,
         decoration: AppDecoration.outlineSecondaryContainer1
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
+            .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_cancel".tr,
         margin: EdgeInsets.only(right: 10.h),
         onPressed: () {
@@ -243,7 +243,7 @@ class ProfileScreenState extends ConsumerState<ProfileScreen> {
       child: CustomElevatedButton(
         height: 40.h,
         decoration: AppDecoration.outlineSecondaryContainer1
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
+            .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
         text: "lbl_save".tr,
         margin: EdgeInsets.only(left: 10.h),
         onPressed: () {

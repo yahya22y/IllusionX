@@ -1,7 +1,7 @@
 import 'en_us/en_us_translations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:yahya_s_application1/core/utils/navigator_service.dart';
+import 'package:IllusionX/core/utils/navigator_service.dart';
 
 class AppLocalization {
   AppLocalization(this.locale);

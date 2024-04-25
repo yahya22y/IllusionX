@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:yahya_s_application1/presentation/login_screen/login_screen.dart';
-import 'package:yahya_s_application1/presentation/signup_screen/signup_screen.dart';
+import 'package:IllusionX/presentation/login_screen/login_screen.dart';
+import 'package:IllusionX/presentation/signup_screen/signup_screen.dart';
 import '../presentation/chatbot_draweritem/chatbot_draweritem.dart';
 import '../presentation/forget_screen/forget_screen.dart';
 import '../presentation/home_screen/home_screen.dart';

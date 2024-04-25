@@ -1,7 +1,7 @@
-import 'package:yahya_s_application1/widgets/custom_text_form_field.dart';
-import 'package:yahya_s_application1/widgets/custom_elevated_button.dart';
+import 'package:IllusionX/widgets/custom_text_form_field.dart';
+import 'package:IllusionX/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
-import 'package:yahya_s_application1/core/app_export.dart';
+import 'package:IllusionX/core/app_export.dart';
 import 'notifier/chatbot_notifier.dart';
 
 // ignore_for_file: must_be_immutable

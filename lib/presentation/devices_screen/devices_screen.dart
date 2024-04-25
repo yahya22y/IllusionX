@@ -1,12 +1,12 @@
-import 'package:yahya_s_application1/widgets/app_bar/custom_app_bar.dart';
-import 'package:yahya_s_application1/widgets/app_bar/appbar_leading_image.dart';
-import 'package:yahya_s_application1/widgets/app_bar/appbar_title.dart';
+import 'package:IllusionX/widgets/app_bar/custom_app_bar.dart';
+import 'package:IllusionX/widgets/app_bar/appbar_leading_image.dart';
+import 'package:IllusionX/widgets/app_bar/appbar_title.dart';
 import 'models/twentyfour_item_model.dart';
 import '../devices_screen/widgets/twentyfour_item_widget.dart';
-import 'package:yahya_s_application1/widgets/custom_elevated_button.dart';
-import 'package:yahya_s_application1/widgets/custom_icon_button.dart';
+import 'package:IllusionX/widgets/custom_elevated_button.dart';
+import 'package:IllusionX/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
-import 'package:yahya_s_application1/core/app_export.dart';
+import 'package:IllusionX/core/app_export.dart';
 import 'notifier/devices_notifier.dart';
 
 class DevicesScreen extends ConsumerStatefulWidget {
@@ -39,13 +39,14 @@ class DevicesScreenState extends ConsumerState<DevicesScreen> {
                       SizedBox(height: 76.v),
                       CustomElevatedButton(
                         height: 50.h,
-                          text: "lbl_add_a_device".tr,
-                          margin: EdgeInsets.only(left: 7.h, right: 8.h),
-                          buttonStyle:
-                              CustomButtonStyles.outlineSecondaryContainer, 
-                              decoration: AppDecoration.outlineSecondaryContainer1
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),)
-                              
+                        text: "lbl_add_a_device".tr,
+                        margin: EdgeInsets.only(left: 7.h, right: 8.h),
+                        buttonStyle:
+                            CustomButtonStyles.outlineSecondaryContainer,
+                        decoration: AppDecoration.outlineSecondaryContainer1
+                            .copyWith(
+                                borderRadius: BorderRadiusStyle.circleBorder11),
+                      )
                     ])),
             bottomNavigationBar: _buildThirtyTwo(context)));
   }
@@ -61,7 +62,9 @@ class DevicesScreenState extends ConsumerState<DevicesScreen> {
             },
             margin: EdgeInsets.only(left: 21.h, top: 15.v, bottom: 16.v)),
         centerTitle: true,
-        title: AppbarTitle(text: "lbl_devices".tr,));
+        title: AppbarTitle(
+          text: "lbl_devices".tr,
+        ));
   }
 
   /// Section Widget

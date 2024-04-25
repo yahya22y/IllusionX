@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yahya_s_application1/core/app_export.dart';
+import 'package:IllusionX/core/app_export.dart';
 
 class AppDecoration {
   // Fill decorations

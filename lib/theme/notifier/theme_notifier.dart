@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:yahya_s_application1/core/utils/pref_utils.dart';
+import 'package:IllusionX/core/utils/pref_utils.dart';
 part 'theme_state.dart';
 
 final themeNotifier = StateNotifierProvider<ThemeNotifier, ThemeState>(
