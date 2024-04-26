@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import '../../core/app_export.dart';
@@ -17,14 +18,64 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(
-      Duration(seconds: 3),
-      () => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (BuildContext context) => SplashOneScreen(),
+    checkNetworkStatus();
+  }
+
+  Future<void> checkNetworkStatus() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+
+    if (connectivityResult == ConnectivityResult.none) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'No Internet Connection',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            content: Text(
+              'Please check your internet connection.',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            actions: [
+              Container(
+                alignment: Alignment.center,
+                child: TextButton(
+                  child: Text(
+                    'OK',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 16,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      Timer(
+        Duration(seconds: 3),
+        () => Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (BuildContext context) => SplashOneScreen(),
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   @override
