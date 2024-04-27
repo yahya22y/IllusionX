@@ -38,13 +38,16 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
               ),
               textAlign: TextAlign.center,
             ),
-            content: Text(
-              'Please check your internet connection.',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
+            content: Flexible(
+              fit: FlexFit.loose,
+              child: Text(
+                'Please check your internet connection.',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
             actions: [
               Container(
@@ -55,6 +58,7 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
                     style: TextStyle(
                       color: Colors.blue,
                       fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   onPressed: () {
