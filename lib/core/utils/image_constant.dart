@@ -88,4 +88,7 @@ class ImageConstant {
   static String imgProfilee = '$imagePath/img_profile_white.png';
 
   static String imgLogout = '$imagePath/img_logout_white.png';
+
+  static String imgSend = '$imagePath/img_send_white.png';
+
 }

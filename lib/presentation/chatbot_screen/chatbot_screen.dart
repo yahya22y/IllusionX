@@ -1,12 +1,14 @@
+import 'package:IllusionX/presentation/chatbot_screen/chat_msg.dart';
+import 'package:IllusionX/presentation/chatbot_screen/chat_reply.dart';
 import 'package:IllusionX/widgets/app_bar/custom_app_bar.dart';
 import 'package:IllusionX/widgets/app_bar/appbar_leading_image.dart';
 import 'package:IllusionX/widgets/app_bar/appbar_trailing_image.dart';
-import 'package:IllusionX/widgets/custom_text_form_field.dart';
+// import 'package:IllusionX/widgets/custom_text_form_field.dart';
 import 'package:IllusionX/widgets/custom_icon_button.dart';
 import 'package:IllusionX/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:IllusionX/core/app_export.dart';
-import 'notifier/chatbot_notifier.dart';
+// import 'notifier/chatbot_notifier.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -38,11 +40,32 @@ class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
     }
   }
 
+  // bool show = false;
+  // FocusNode focusNode = FocusNode();
+  bool sendButton = false;
+  var _controller = TextEditingController();
+  // ScrollController _scrollController = ScrollController();
+  var message = "";
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _sendMessage() {
+    message = _controller.text;
+    if(message.trim().isEmpty){
+      return;
+    }
+    _controller.clear();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
         appBar: _buildAppBar(context),
         body: Container(
           width: double.maxFinite,
@@ -52,31 +75,79 @@ class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
               Spacer(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 18.h),
-                child: Consumer(
-                  builder: (context, ref, _) {
-                    return CustomTextFormField(
-                      controller: ref.watch(chatbotNotifier).menuController,
-                      hintText: "msg_type_something".tr,
-                      textInputAction: TextInputAction.done,
-                      suffix: Container(
-                        margin: EdgeInsets.fromLTRB(30.h, 11.v, 11.h, 14.v),
-                        child: CustomImageView(
-                          imagePath: ImageConstant.imgMenu,
-                          height: 20.adaptSize,
-                          width: 20.adaptSize,
+                child: Container(
+                  height: 70,
+                  width: MediaQuery.of(context).size.width,
+                  child: Stack(
+                    children: [
+                      ListView(
+                        shrinkWrap: true,
+                        // ChatMsg($message),
+                        // ReplyCard(),
+                        ),
+                        
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Row(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width - 40,
+                              child: Card(
+                                color: Colors.white,
+                                margin: EdgeInsets.only(
+                                    left: 2, right: 2, bottom: 8),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                child: TextFormField(
+                                  controller: _controller,
+                                  textAlignVertical: TextAlignVertical.center,
+                                  keyboardType: TextInputType.multiline,
+                                  maxLines: 5,
+                                  minLines: 1,
+                                  onChanged: (value) {
+                                    if (value.length > 0) {
+                                      setState(() {
+                                        sendButton = true;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        sendButton = false;
+                                      });
+                                    }
+                                  },
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "Type something...",
+                                    contentPadding: EdgeInsets.all(10),
+                                    hintStyle: TextStyle(
+                                      fontFamily: 'Futura',
+                                      fontWeight: FontWeight
+                                          .w100, //change the font family of the hint text!!!!
+                                      color: Color.fromRGBO(169, 169, 172, 1),
+                                      fontSize: 15.0,
+                                    ),
+                                    suffixIcon: IconButton(
+                                        icon: Icon(
+                                          sendButton ? Icons.send : Icons.mic,
+                                          color: Color.fromRGBO(77, 77, 233, 1),
+                                        ),
+                                        onPressed: () {
+                                          if (sendButton) {
+                                            _sendMessage;
+                                            setState(() {
+                                              sendButton = false;
+                                            });
+                                          }
+                                        }),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      suffixConstraints: BoxConstraints(
-                        maxHeight: 45.v,
-                      ),
-                      contentPadding: EdgeInsets.only(
-                        left: 19.h,
-                        top: 14.v,
-                        bottom: 14.v,
-                      ),
-                      borderDecoration: TextFormFieldStyleHelper.fillWhiteA,
-                    );
-                  },
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -85,6 +156,7 @@ class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
         bottomNavigationBar: _buildSixtyNine(context),
       ),
     );
+    
   }
 
   /// Section Widget
