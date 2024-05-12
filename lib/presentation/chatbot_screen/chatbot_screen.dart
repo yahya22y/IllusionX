@@ -22,24 +22,14 @@ class ChatbotTwoScreen extends ConsumerStatefulWidget {
   ChatbotTwoScreenState createState() => ChatbotTwoScreenState();
 }
 
+class ChatMessage {
+  final String message;
+  final bool isUser;
+
+  ChatMessage({required this.message, required this.isUser});
+}
+
 class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
-  Future<String> sendMessageToAPI(String message) async {
-    final apiUrl = 'https://api.example.com/chatbot'; // Replace with FastAPI
-
-    final response = await http.post(
-      Uri.parse(apiUrl),
-      body: {'message': message},
-    );
-
-    if (response.statusCode == 200) {
-      final responseBody = jsonDecode(response.body);
-      final reply = responseBody['reply'];
-      return reply;
-    } else {
-      throw Exception('Failed to send message to API');
-    }
-  }
-
   // bool show = false;
   // FocusNode focusNode = FocusNode();
   bool sendButton = false;
@@ -53,14 +43,49 @@ class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
     super.dispose();
   }
 
-  void _sendMessage() {
+  void _sendMessage() async {
     message = _controller.text;
-    if(message.trim().isEmpty){
+    if (message.trim().isEmpty) {
       return;
     }
     _controller.clear();
-  }
 
+    final apiUrl = 'http://localhost:8000/chatapi/chat';
+
+    try {
+      final response = await http.post(
+        Uri.parse(apiUrl),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'prompt': message,
+          'api': 'AIzaSyBz1bvUjzOPTNsNuho8Kp6blRn6ZXO7XgA',
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final responseBody = jsonDecode(response.body);
+
+        if (responseBody.containsKey('reply')) {
+          // Extract the reply from the response
+          final reply = responseBody['reply'];
+
+          // Add the received message to the chat
+          _addMessage(message, true);
+          _addMessage(reply, false);
+        } else {
+          throw FormatException(
+              'Invalid API response format: reply field not found');
+        }
+      } else {
+        throw Exception('Failed to send message to API');
+      }
+    } catch (e) {
+      print('Error: $e');
+      // Handle error, maybe show a snackbar or dialog to the user
+      // For example:
+      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to send message. Please try again.')));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,10 +107,8 @@ class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
                     children: [
                       ListView(
                         shrinkWrap: true,
-                        // ChatMsg($message),
-                        // ReplyCard(),
-                        ),
-                        
+                        children: _buildChatMessages(),
+                      ),
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: Row(
@@ -97,7 +120,8 @@ class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
                                 margin: EdgeInsets.only(
                                     left: 2, right: 2, bottom: 8),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15)),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
                                 child: TextFormField(
                                   controller: _controller,
                                   textAlignVertical: TextAlignVertical.center,
@@ -121,24 +145,24 @@ class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
                                     contentPadding: EdgeInsets.all(10),
                                     hintStyle: TextStyle(
                                       fontFamily: 'Futura',
-                                      fontWeight: FontWeight
-                                          .w100, //change the font family of the hint text!!!!
+                                      fontWeight: FontWeight.w100,
                                       color: Color.fromRGBO(169, 169, 172, 1),
                                       fontSize: 15.0,
                                     ),
                                     suffixIcon: IconButton(
-                                        icon: Icon(
-                                          sendButton ? Icons.send : Icons.mic,
-                                          color: Color.fromRGBO(77, 77, 233, 1),
-                                        ),
-                                        onPressed: () {
-                                          if (sendButton) {
-                                            _sendMessage;
-                                            setState(() {
-                                              sendButton = false;
-                                            });
-                                          }
-                                        }),
+                                      icon: Icon(
+                                        sendButton ? Icons.send : Icons.mic,
+                                        color: Color.fromRGBO(77, 77, 233, 1),
+                                      ),
+                                      onPressed: () {
+                                        if (sendButton) {
+                                          _sendMessage();
+                                          setState(() {
+                                            sendButton = false;
+                                          });
+                                        }
+                                      },
+                                    ),
                                   ),
                                 ),
                               ),
@@ -156,131 +180,151 @@ class ChatbotTwoScreenState extends ConsumerState<ChatbotTwoScreen> {
         bottomNavigationBar: _buildSixtyNine(context),
       ),
     );
-    
   }
 
-  /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      leadingWidth: 45.h,
-      leading: AppbarLeadingImage(
-        imagePath: ImageConstant.imgVuesaxLinearArrowLeft,
+  // Helper method to add a message to the chat
+  List<ChatMessage> _chatMessages = [];
+
+  // Helper method to build the chat messages
+  List<Widget> _buildChatMessages() {
+    return _chatMessages.map((message) {
+      return message.isUser
+          ? ChatMsg(message: message.message)
+          : ReplyCard(message: message.message);
+    }).toList();
+  }
+
+  // Helper method to add a message to the chat
+  void _addMessage(String message, bool isUser) {
+    setState(() {
+      _chatMessages.add(ChatMessage(message: message, isUser: isUser));
+    });
+  }
+
+  // ...
+}
+
+/// Section Widget
+PreferredSizeWidget _buildAppBar(BuildContext context) {
+  return CustomAppBar(
+    leadingWidth: 45.h,
+    leading: AppbarLeadingImage(
+      imagePath: ImageConstant.imgVuesaxLinearArrowLeft,
+      onTap: () {
+        onTapBtnHome(context);
+      },
+      margin: EdgeInsets.only(
+        left: 21.h,
+        top: 16.v,
+        bottom: 16.v,
+      ),
+    ),
+    actions: [
+      AppbarTrailingImage(
+        imagePath: ImageConstant.imgVuesaxLinearMessageText,
         onTap: () {
-          onTapBtnHome(context);
+          onTapBtnchatlist(context);
         },
-        margin: EdgeInsets.only(
-          left: 21.h,
-          top: 16.v,
-          bottom: 16.v,
+        margin: EdgeInsets.symmetric(
+          horizontal: 19.h,
+          vertical: 14.v,
         ),
       ),
-      actions: [
-        AppbarTrailingImage(
-          imagePath: ImageConstant.imgVuesaxLinearMessageText,
+    ],
+  );
+}
+
+/// Section Widget
+Widget _buildSixtyNine(BuildContext context) {
+  return Padding(
+    padding: EdgeInsets.only(
+      left: 18.h,
+      right: 21.h,
+      bottom: 12.v,
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CustomIconButton(
+          height: 39.adaptSize,
+          width: 39.adaptSize,
+          padding: EdgeInsets.all(6.h),
           onTap: () {
-            onTapBtnchatlist(context);
+            onTapBtnHome(context);
           },
-          margin: EdgeInsets.symmetric(
-            horizontal: 19.h,
-            vertical: 14.v,
+          child: CustomImageView(
+            imagePath: ImageConstant.imgHome,
+          ),
+        ),
+        CustomElevatedButton(
+          decoration: AppDecoration.outlineSecondaryContainer1
+              .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
+          width: 153.h,
+          text: "lbl_chatbot".tr,
+          margin: EdgeInsets.only(
+            left: 24.h,
+            top: 5.v,
+            bottom: 3.v,
+          ),
+          leftIcon: Container(
+            margin: EdgeInsets.only(right: 30.h),
+            child: CustomImageView(
+              imagePath: ImageConstant.imgThumbsup,
+              height: 20.v,
+            ),
+          ),
+        ),
+        Spacer(),
+        CustomIconButton(
+          height: 39.adaptSize,
+          width: 39.adaptSize,
+          padding: EdgeInsets.all(6.h),
+          onTap: () {
+            onTapBtnDevices(context);
+          },
+          child: CustomImageView(
+            imagePath: ImageConstant.imgDevices,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 25.h),
+          child: CustomIconButton(
+            height: 39.adaptSize,
+            width: 39.adaptSize,
+            padding: EdgeInsets.all(4.h),
+            onTap: () {
+              onTapBtnSearch(context);
+            },
+            child: CustomImageView(
+              imagePath: ImageConstant.imgSearch,
+            ),
           ),
         ),
       ],
-    );
-  }
+    ),
+  );
+}
 
-  /// Section Widget
-  Widget _buildSixtyNine(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: 18.h,
-        right: 21.h,
-        bottom: 12.v,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomIconButton(
-            height: 39.adaptSize,
-            width: 39.adaptSize,
-            padding: EdgeInsets.all(6.h),
-            onTap: () {
-              onTapBtnHome(context);
-            },
-            child: CustomImageView(
-              imagePath: ImageConstant.imgHome,
-            ),
-          ),
-          CustomElevatedButton(
-            decoration: AppDecoration.outlineSecondaryContainer1
-                .copyWith(borderRadius: BorderRadiusStyle.circleBorder11),
-            width: 153.h,
-            text: "lbl_chatbot".tr,
-            margin: EdgeInsets.only(
-              left: 24.h,
-              top: 5.v,
-              bottom: 3.v,
-            ),
-            leftIcon: Container(
-              margin: EdgeInsets.only(right: 30.h),
-              child: CustomImageView(
-                imagePath: ImageConstant.imgThumbsup,
-                height: 20.v,
-              ),
-            ),
-          ),
-          Spacer(),
-          CustomIconButton(
-            height: 39.adaptSize,
-            width: 39.adaptSize,
-            padding: EdgeInsets.all(6.h),
-            onTap: () {
-              onTapBtnDevices(context);
-            },
-            child: CustomImageView(
-              imagePath: ImageConstant.imgDevices,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 25.h),
-            child: CustomIconButton(
-              height: 39.adaptSize,
-              width: 39.adaptSize,
-              padding: EdgeInsets.all(4.h),
-              onTap: () {
-                onTapBtnSearch(context);
-              },
-              child: CustomImageView(
-                imagePath: ImageConstant.imgSearch,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+onTapBtnHome(BuildContext context) {
+  NavigatorService.pushNamed(
+    AppRoutes.homeScreen,
+  );
+}
 
-  onTapBtnHome(BuildContext context) {
-    NavigatorService.pushNamed(
-      AppRoutes.homeScreen,
-    );
-  }
+onTapBtnDevices(BuildContext context) {
+  NavigatorService.pushNamed(
+    AppRoutes.deviceScreen,
+  );
+}
 
-  onTapBtnDevices(BuildContext context) {
-    NavigatorService.pushNamed(
-      AppRoutes.deviceScreen,
-    );
-  }
+onTapBtnSearch(BuildContext context) {
+  NavigatorService.pushNamed(
+    AppRoutes.settingsScreen,
+  );
+}
 
-  onTapBtnSearch(BuildContext context) {
-    NavigatorService.pushNamed(
-      AppRoutes.settingsScreen,
-    );
-  }
-
-  onTapBtnchatlist(BuildContext context) {
-    NavigatorService.pushNamed(
-      AppRoutes.chatbotlistScreen,
-    );
-  }
+onTapBtnchatlist(BuildContext context) {
+  NavigatorService.pushNamed(
+    AppRoutes.chatbotlistScreen,
+  );
 }

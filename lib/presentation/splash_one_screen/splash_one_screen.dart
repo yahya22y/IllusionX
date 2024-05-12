@@ -18,7 +18,7 @@ class SplashOneScreenState extends ConsumerState<SplashOneScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 3), // Change the duration as per your requirement
+      Duration(seconds: 2), // Change the duration as per your requirement
       () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (BuildContext context) => OnboardingScreen(),

@@ -72,7 +72,7 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
       );
     } else {
       Timer(
-        Duration(seconds: 3),
+        Duration(seconds: 1),
         () => Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (BuildContext context) => SplashOneScreen(),
